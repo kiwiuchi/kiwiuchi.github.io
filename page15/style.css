@@ -1,0 +1,109 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #ffffff;
+}
+
+.wrapper {
+  position: relative;
+  height: 100vh;
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-img {
+  max-height: 100vh;
+  width: auto;
+  display: block;
+}
+
+/* --- 이미지 레이어 설정 --- */
+.room13 {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; 
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.room12 {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; 
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.room11 {
+  z-index: 1;
+}
+
+
+/* --- 조작 영역 설정 --- */
+
+/* [기존] 손 모양 링크 */
+.hand-area {
+  position: absolute;
+  z-index: 10; 
+  top: 5%; left: 5%;
+  width: 15%; height: 20%;
+  cursor: pointer;
+}
+
+/* [기존] 인체 모형 포스터 */
+.poster-area {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  top: 24%;
+  left: 20%;
+  width: 9%;
+  height: 16%;
+}
+
+/* [★추가됨] 중앙 클립보드 영역 (page17 이동) */
+.clipboard-area {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+
+  /* 초록색 선 영역 위치 추정 */
+  top: 6%;       /* 위쪽 여백 */
+  left: 37%;     /* 왼쪽 여백 (컵 더미 옆) */
+  width: 24%;    /* 너비 */
+  height: 48%;   /* 높이 */
+
+  /* background: rgba(0, 255, 0, 0.4); */ /* ★위치 확인용: 주석 풀면 초록 박스가 보입니다 */
+}
+
+/* [기존] 스위치 영역 */
+.switch-area {
+  position: absolute;
+  z-index: 10;
+  top: 19%;     
+  right: 9%;   
+  width: 7%;    
+  height: 14%;  
+  cursor: pointer;
+}
+
+#switch-trigger {
+  display: none;
+}
+
+
+/* --- 동작 로직 --- */
+.hand-area:hover ~ .room13 {
+  opacity: 1;
+}
+
+#switch-trigger:checked ~ .room12 {
+  opacity: 1;
+}

@@ -1,0 +1,45 @@
+/* 여백 제거해서 화면 꽉 채우기 */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* 전체 화면 컨테이너 */
+.wrapper {
+  height: 100vh;           /* 화면 높이 100% */
+  display: flex;           /* 플렉스 박스 사용 */
+  justify-content: center; /* 가로 가운데 */
+  align-items: center;     /* 세로 가운데 */
+  background: #ffffff;     /* 배경색 (원하면 변경) */
+  position: relative;      /* 화살표 겹치기 위해 추가 */
+}
+
+/* m 이미지 크기: 다른 페이지와 동일 */
+.wrapper .bg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 화살표: m 위에 비율로 겹치기 */
+.wrapper .arrow {
+  position: absolute;
+
+  /* m 이미지 안에서의 상대 위치 (상자 위에 맞게 조정) */
+  left: 50%;    /* 가로 중앙이면 50% */
+  top: 67%;     /* 상자 위면 값 바꿔보며 맞추기 */
+
+  transform: translate(-50%, -100%);
+
+  /* 화살표 크기도 m 비율에 맞게 같이 줄어들게 */
+  width: 3.5%;     /* 필요에 따라 3~8%로 조정 */
+  height: auto;
+
+  animation: upDown 1s ease-in-out infinite;
+}
+
+/* 위아래로 살짝 움직이게 */
+@keyframes upDown {
+  0%   { transform: translate(-50%, -100%); }
+  50%  { transform: translate(-50%, -90%); }
+  100% { transform: translate(-50%, -100%); }
+}
